@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Security Lab Commands</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+        }
+        h2 {
+            color: #22c55e;
+            border-bottom: 1px solid gray;
+            padding-bottom: 5px;
+        }
+        pre {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cyber Security Lab Commands</h1>
+
+<h2>1. Disk Imaging & Forensics</h2>
+<pre>
+echo "Cybersecurity Lab Evidence" > evidence.txt
+ls
+lsblk
+dd if=/dev/zero of=practice_disk.dd bs=1M count=100
+mkfs.ext4 practice_disk.dd
+ls -lh /home/kali/disk_image.dd
+cat /home/kali/acquisition.log
+autopsy
+</pre>
+
+<h2>2. Log File Analysis</h2>
+<pre>
+cd /var/log
+ls
+last
+journalctl | less
+journalctl | grep "Failed"
+journalctl | grep ssh
+journalctl | grep -i error
+cd /var/log/apache2
+ls
+sudo less access.log
+grep "404" /var/log/apache2/access.log
+less /var/log/dpkg.log
+sudo journalctl -f
+sudo apt install openssh-server -y
+sudo service ssh start
+ip a
+ssh fakeuser@localhost
+journalctl | grep "Failed password"
+journalctl | grep "Failed password" | awk '{print $11}'
+journalctl | grep "Failed password" | awk '{print $11}' | sort | uniq -c | sort -nr
+sudo lastb
+journalctl --since "10 minutes ago"
+</pre>
+
+<h2>3. IoT Security Testing</h2>
+<pre>
+docker run -d -p 8090:3000 --name juiceshop bkimminich/juice-shop
+http://localhost:8090
+ipconfig
+nmap -sV 192.168.x.x
+</pre>
+
+<h2>4. Network Forensics (Wireshark)</h2>
+<pre>
+wireshark &
+tcp
+udp
+http
+ip.addr == 192.168.x.x
+ip.src == 192.168.x.x
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+nmap -sS 192.168.x.x
+</pre>
+
+<h2>5. Security Audit (Windows)</h2>
+<pre>
+msinfo32
+Ctrl + Shift + Esc
+Windows + R
+</pre>
+
+</body>
+</html>
